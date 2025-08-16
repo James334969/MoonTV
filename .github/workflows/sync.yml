@@ -21,6 +21,13 @@ jobs:
         uses: actions/checkout@v4
 
       # Step 2: run the sync action
+      - name: Add upstream remote
+        run: |
+          if ! git remote | grep upstream; then
+          git remote add upstream https://github.com/senshinya/MoonTV.git
+          fi
+
+
       - name: Sync upstream changes
         id: sync
         uses: aormsby/Fork-Sync-With-Upstream-action@v3.4.1
